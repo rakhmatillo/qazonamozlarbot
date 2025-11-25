@@ -12,8 +12,9 @@ from database import (
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-# Replace with your token from BotFather
-TOKEN = '8584731125:AAH0vO3LbWpHBlCTH4_RezbCF-dlYvtoBb4'
+TOKEN = os.environ.get('BOT_TOKEN')
+if not TOKEN:
+    raise ValueError("BOT_TOKEN environment variable not set!")
 
 # Conversation states
 SETUP_BOMDOD, SETUP_PESHIN, SETUP_ASR, SETUP_SHOM, SETUP_XUFTON, SETUP_VITR, CONFIRM_SETUP = range(7)
